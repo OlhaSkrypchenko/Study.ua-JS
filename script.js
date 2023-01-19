@@ -1,12 +1,10 @@
 "use strict";
 
-let defaultFirstValue = 1;
-let defaultSecondValue = 2;
 let bonus = 1;
 let basicSalaryAmount = 2000;
 
-let firstMonthSalary = prompt("Enter first month salary", defaultFirstValue);
-let secondMonthSalary = prompt("Enter second month salary", defaultSecondValue);
+let firstMonthSalary = prompt("Enter first month salary", 1);
+let secondMonthSalary = prompt("Enter second month salary", 2);
 
 if (firstMonthSalary && secondMonthSalary) {
     let totalSalaryAmount = Number(firstMonthSalary) + Number(secondMonthSalary);
