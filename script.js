@@ -41,7 +41,7 @@ function compareArrSum(a, b) {
       case firstArrSum < secondArrSum:
         return "a < b";
       case firstArrSum === secondArrSum:
-        return "a = b";
+        return "a == b";
     }
   }
 
