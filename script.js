@@ -18,9 +18,9 @@ class User {
       const oldName = this._name;
       this._name = name;
 
-      return `Name Changed From ${oldName} to ${(name)}`
+      return `Name Changed From ${oldName} to ${name}`;
     }
-    
+
     return "Permission denied";
   }
 }
@@ -38,5 +38,3 @@ console.log(user2.getName(true));
 console.log(user2.getName(false));
 
 console.log(user1.changeName("Bill", "123"));
-console.log(user1.changeName("Bill", "13"));
-
