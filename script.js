@@ -26,38 +26,63 @@
 
 // Object.seal(configurateDB);
 
-// task 3
+// // task 3
 
-let salaries = {
-  frontend: 2000,
-  backend: 1500,
-  design: 1000,
-};
+// let salaries = {
+//   frontend: 2000,
+//   backend: 1500,
+//   design: 1000,
+// };
 
-Object.defineProperty(salaries, "sum", {
-  get() {
-    let sum = 0;
-    for (salary in this) {
-      sum += this[salary];
-    }
+// Object.defineProperty(salaries, "sum", {
+//   get() {
+//     let sum = 0;
+//     for (salary in this) {
+//       sum += this[salary];
+//     }
 
-    console.log(sum);
-  },
-  enumerable: false,
-});
+//     return sum;
+//   },
+//   enumerable: false,
+// });
 
-Object.defineProperty(salaries, "addSalaries", {
-  set(arr) {
-    if (Array.isArray(arr)) {
-      arr.forEach((el) => {
-        let [key, salaryAmount] = el.split(": ");
-        salaries[key] = +salaryAmount;
-      });
-    }
-  },
+// Object.defineProperty(salaries, "addSalaries", {
+//   set(arr) {
+//     if (Array.isArray(arr)) {
+//       arr.forEach((el) => {
+//         let [key, salaryAmount] = el.split(": ");
+//         salaries[key] = +salaryAmount;
+//       });
+//     }
+//   },
 
-  enumerable: false,
-});
+//   enumerable: false,
+// });
 
-salaries.addSalaries = ['frontend: 2500', 'backend: 1750', 'design: 1300', 'manager: 800'];
-console.log(salaries);
+// salaries.addSalaries = ['frontend: 2500', 'backend: 1750', 'design: 1300', 'manager: 800'];
+// console.log(salaries);
+
+// // task 4
+
+// let user1 = {
+//   name: 'Mike',
+//   surname: 'Davis',
+//   age: 25
+// }
+
+// Object.defineProperty(user1, 'userInfo', {
+//   get() {
+//     let result = '';
+//     for (key in this) {
+//       result += `${key}: ${this[key]}, `;
+//     }
+  
+//     return result.slice(0, result.length-2);
+//   },
+
+//   enumerable: false
+// })
+
+// console.log(user1.userInfo);
+// user1.login = 'MK_18';
+// console.log(user1.userInfo);
