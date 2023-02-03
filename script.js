@@ -77,12 +77,12 @@ let user1 = {
 
 Object.defineProperty(user1, "userInfo", {
   get() {
-    let result = "";
+    let result = [];
     for (key in this) {
-      result += `${key}: ${this[key]}, `;
+      result.push(`${key}: ${this[key]}`);
     }
 
-    return result.slice(0, result.length - 2);
+    return result.join(', ');
   },
 
   enumerable: false,
