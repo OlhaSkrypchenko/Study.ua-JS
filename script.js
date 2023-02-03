@@ -1,27 +1,63 @@
-'use strict';
+"use strict";
 
 // task 1
 
-const user = {};
+// const user = {};
 
-Object.defineProperties(user, {
-  name: {value: 'Ivan', writable: false},
-  age: {value: 20, writable: false},
-  id: {value: 123, configurable: false}
+// Object.defineProperties(user, {
+//   name: { value: "Ivan", writable: false },
+//   age: { value: 20, writable: false },
+//   id: { value: 123, configurable: false },
+// });
+
+// // task 2
+// let dataBase = {
+//   dbName: "user",
+//   dbType: "MySQL",
+// };
+
+// Object.freeze(dataBase);
+
+// let configurateDB = {
+//   token: "123",
+//   password: "567",
+//   user: "admin",
+// };
+
+// Object.seal(configurateDB);
+
+// task 3
+
+let salaries = {
+  frontend: 2000,
+  backend: 1500,
+  design: 1000,
+};
+
+Object.defineProperty(salaries, "sum", {
+  get() {
+    let sum = 0;
+    for (salary in this) {
+      sum += this[salary];
+    }
+
+    console.log(sum);
+  },
+  enumerable: false,
 });
 
-// task 2
-let dataBase = {
-  dbName:'user',
-  dbType: 'MySQL'
-}
+Object.defineProperty(salaries, "addSalaries", {
+  set(arr) {
+    if (Array.isArray(arr)) {
+      arr.forEach((el) => {
+        let [key, salaryAmount] = el.split(": ");
+        salaries[key] = +salaryAmount;
+      });
+    }
+  },
 
-Object.freeze(dataBase);
+  enumerable: false,
+});
 
-let configurateDB = {
-  token: '123',
-  password: '567',
-  user: 'admin'
-}
-
-Object.seal(configurateDB);
+salaries.addSalaries = ['frontend: 2500', 'backend: 1750', 'design: 1300', 'manager: 800'];
+console.log(salaries);
