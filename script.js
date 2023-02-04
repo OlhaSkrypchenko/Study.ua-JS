@@ -51,7 +51,7 @@ Object.defineProperty(salaries, "addSalaries", {
     if (Array.isArray(arr)) {
       arr.forEach((el) => {
         let [key, salaryAmount] = el.split(": ");
-        salaries[key] = +salaryAmount;
+        this[key] = +salaryAmount;
       });
     }
   },
