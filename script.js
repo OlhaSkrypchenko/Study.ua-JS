@@ -1,6 +1,6 @@
 "use strict";
 
-// tasks 1-2
+//  tasks 1-2
 
 function count(expression) {
   function getValues(data) {
@@ -55,34 +55,38 @@ console.log(count("5/0"));
 // task 3
 
 function count1(expression) {
-  function getValues(expression) {
-    let values = [...expression];
-    return values;
-  }
-
-  let values;
-
   try {
-    let data = Values(expression); //wrong
-    values = data;
+    if (typeof expression !== "string") {
+      throw new Error("Please, write in a string format");
+    }
+
+    function getValues(expression) {
+      let values = [...expression];
+      return values;
+    }
+
+    let values = Values(expression);
+
+    switch (values[1]) {
+      case "+":
+        return showResult(sum1(values));
+      case "-":
+        return showResult(subtract1(values));
+      case "*":
+        return showResult(multiply1(values));
+      case "/":
+        return showResult(divide1(values));
+    }
+
+    function showResult(value) {
+      return value;
+    }
   } catch (err) {
-    console.log(err.name + ": " + err.message); //wrong
-    values = [0, "+", 0];
-  }
-
-  switch (values[1]) {
-    case "+":
-      return showResult(sum(values));
-    case "-":
-      return showResult(subtract(values));
-    case "*":
-      return showResult(multiply(values));
-    case "/":
-      return showResult(divide(values));
-  }
-
-  function showResult(value) {
-    return value;
+    if (err.message === "Please, write in a string format") {
+      console.log(err.message);
+    } else {
+      throw err;
+    }
   }
 }
 
@@ -102,7 +106,17 @@ function divide1(values) {
   return +values[0] / +values[2];
 }
 
-console.log(count1("5+2"));
+try {
+  count1(5 * 2);
+} catch(err) {
+  console.log(err.name + ": " + err.message);
+}
+
+try {
+  count1('5 * 2');
+} catch(err) {
+  console.log(err.name + ": " + err.message);
+}
 
 // task 4
 
@@ -126,7 +140,15 @@ function showMovie(user) {
     }
   } catch (err) {
     console.log(`${err.name}: ${err.message}`);
-    user.age = +prompt("Enter your age", 18);
+
+    let userAge = prompt("Enter your age", 18);
+      
+
+    while (typeof +userAge !== "number" || isNaN(+userAge) || userAge === null) {
+      userAge = prompt("Enter your age", 18);
+    }
+
+    user.age = +userAge;
     return showMovie(user);
   }
 }
