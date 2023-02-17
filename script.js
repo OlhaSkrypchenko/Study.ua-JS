@@ -41,3 +41,24 @@ async function getData1(url) {
 getData1(url).then(returnData => {
   console.log(returnData)
 })
+
+
+let titlesA = document.querySelector('.user-a');
+let titlesAB = document.querySelector('.user-ab');
+
+function createUsers(elem, content ='', parent) {
+  let row = document.createElement(elem);
+  row.textContent = content;
+  parent.append(row);
+}
+
+getData1(url).then(returnData => {
+  returnData.forEach(element => {
+   createUsers('div', JSON.stringify(element), titlesA);
+
+    if(element.title[1] === 'b') {
+      createUsers('div', JSON.stringify(element), titlesAB);
+    }
+   
+  });
+})
