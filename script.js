@@ -111,22 +111,26 @@ let nikola = {name: 'Nikola', age: 32};
 
 let userVisits = new Map();
 userVisits.set(mike, 0).set(bob, 0).set(nikola, 0);
-console.log(userVisits);
 
-function mikeVisits(user) {
-    let result = userVisits.get(user) +1;
-    userVisits.set(user, result);
+function countVisits() {
+    let result = 0
+
+    return function(user) {
+        userVisits.set(user, ++result)
+    }
 }
 
-mikeVisits(mike);
+const mikeVisits = countVisits();
+const bobVisits = countVisits();
+const nikolaVisits= countVisits();
 
 mikeVisits(mike);
-
 mikeVisits(mike);
-
-// bobVisits(bob);
-// nikolaVisits(nikola);
+mikeVisits(mike);
+bobVisits(bob);
+nikolaVisits(nikola);
+nikolaVisits(nikola);
 
 console.log(userVisits.get(mike));
-// console.log(userVisits.get(bob));
-// console.log(userVisits.get(nikola));
+console.log(userVisits.get(bob));
+console.log(userVisits.get(nikola));
