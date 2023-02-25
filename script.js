@@ -1,3 +1,4 @@
+
 "use strict";
 
 // task 1
@@ -113,7 +114,7 @@ let userVisits = new Map();
 userVisits.set(mike, 0).set(bob, 0).set(nikola, 0);
 
 function countVisits() {
-    let result = 0
+    let result = 0;
 
     return function(user) {
         userVisits.set(user, ++result)
