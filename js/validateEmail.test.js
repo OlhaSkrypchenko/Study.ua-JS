@@ -34,7 +34,7 @@ describe("validateEmail", function () {
         "string has more than two @"
       );
     });
-    it("dot  stands after and does not stands before", function () {
+    it("dot stands after @ and does not stands before @", function () {
       assert.equal(validateEmail("e.mail@gmail.com"), true, "");
       assert.equal(validateEmail("e.mail@gmailcom"), false, "");
       assert.equal(validateEmail("e.mail.@gmail.com"), false, "");
