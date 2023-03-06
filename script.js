@@ -20,13 +20,13 @@ let salaries = {
 
 function maxSalaries(salaries) {
   const arr = Object.entries(salaries);
-  let [name, salary] = ['', 0];
+  let [name, salary] = ["", 0];
 
   arr.forEach((elem) => {
-      if (elem[1] > salary) {
-          [name, salary] = elem;
-      }
-  })
+    if (elem[1] > salary) {
+      [name, salary] = elem;
+    }
+  });
 
   return name;
 }
