@@ -111,7 +111,6 @@ let bob = {name: 'Bob', age: 25};
 let nikola = {name: 'Nikola', age: 32}; 
 
 let userVisits = new Map();
-userVisits.set(mike, 0).set(bob, 0).set(nikola, 0);
 
 function countVisits() {
     let result = 0;
